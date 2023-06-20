@@ -286,12 +286,12 @@
       }
     }
     // Manejador de eventos para el clic en el mapa
-    function onMapClick(e) {
+    function onMapClick(a) {
       if (isFormOpened) { // Verificar si el formulario está abierto
         if (marker) {
           map.removeLayer(marker);
         }
-        clickedLatLng = e.latlng;
+        clickedLatLng = a.latlng;
         document.getElementById('latitude').value = clickedLatLng.lat;
         document.getElementById('longitude').value = clickedLatLng.lng;
         marker = L.marker(clickedLatLng).addTo(map);
@@ -373,10 +373,10 @@
       $('#form2').toggle();
       if ($('#form2').is(':visible')) {
         // Si el formulario se muestra, agregar el evento de clic al mapa
-        map.on('click', onMapClick);
+        map.on('click', onMapClick2);
       } else {
         // Si el formulario se oculta, eliminar el marcador y el evento de clic del mapa
-        map.off('click', onMapClick);
+        map.off('click', onMapClick2);
         if (marker2) {
           map.removeLayer(marker2);
           marker2 = null; // Eliminar la referencia al marcador
@@ -384,7 +384,7 @@
       }
     }
     // Manejador de eventos para el clic en el mapa
-    function onMapClick(e) {
+    function onMapClick2(e) {
       if ($('#form2').is(':visible')) {
         // Verificar si el formulario está visible
         if (marker2) {
